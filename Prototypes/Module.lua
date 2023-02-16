@@ -1,28 +1,21 @@
---This function returns a list containing the names of inserter recipes that the Inserter Module can improve:
---The vanilla inserters have always been supported.
---Bob's express inserters from his boblogistics mod are supported beginning in version 1.1.1 of InserterModule.
-function insertermodulelimitation()
-	local allowedInserters =
-	{
-		"burner-inserter",
-		"inserter",
-		"long-handed-inserter",
-		"fast-inserter",
-		"filter-inserter",
-		"stack-inserter",
-		"stack-filter-inserter"
-	}
-	if bobmods and bobmods.logistics then
-		table.insert( allowedInserters, "express-inserter" )
-		table.insert( allowedInserters, "express-filter-inserter" )
-		table.insert( allowedInserters, "express-stack-inserter" )
-		table.insert( allowedInserters, "express-stack-filter-inserter" )
-	end
-	return allowedInserters
-end
+--This function generates a list containing the names of inserter recipes that the Inserter Module can affect.
+--If the setting "dynamic recipe whitelist" is set to true, this table will be overwritten during the data-final-fixes step.
+local inserterModuleLimitation =
+{
+	"burner-inserter",
+	"inserter",
+	"long-handed-inserter",
+	"fast-inserter",
+	"filter-inserter",
+	"stack-inserter",
+	"stack-filter-inserter"
+}
 
 data:extend({
-{ type = "module-category", name = "inserter" },
+{
+	type = "module-category",
+	name = "inserter"
+},
 {
 	type = "module",
 	name = "inserter-module",
@@ -35,7 +28,7 @@ data:extend({
 	stack_size = 50,
 	default_request_amount = 10,
 	effect = { productivity = { bonus = 0.04 }, consumption = { bonus = 0.3 }, pollution = { bonus = 0.8 }},
-	limitation = insertermodulelimitation(),
+	limitation = inserterModuleLimitation,
 	limitation_message_key = "inserter-module-limitation"
 },
 {
@@ -50,7 +43,7 @@ data:extend({
 	stack_size = 50,
 	default_request_amount = 10,
 	effect = { productivity = { bonus = 0.07 }, consumption = { bonus = 0.5 }, pollution = { bonus = 0.4 }},
-	limitation = insertermodulelimitation(),
+	limitation = inserterModuleLimitation,
 	limitation_message_key = "inserter-module-limitation"
 },
 {
@@ -65,7 +58,7 @@ data:extend({
 	stack_size = 50,
 	default_request_amount = 10,
 	effect = { productivity = { bonus = 0.13 }, consumption = { bonus = 0.8 }},
-	limitation = insertermodulelimitation(),
+	limitation = inserterModuleLimitation,
 	limitation_message_key = "inserter-module-limitation"
 }
 })
