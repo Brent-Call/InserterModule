@@ -70,7 +70,12 @@ function remove_inserter_modules_from_entity( entity )
 			--Inserter Module detected!  Attempt to remove it, but be careful so as to not duplicate items.
 			local numItemsRemoved = moduleInventory.remove({ name = itemName, count = amountInInventory })
 			if numItemsRemoved > 0 then
-				entity.surface.create_entity({ name = "item-on-ground", position = entity.position,
+				local surface = entity.surface
+				--Search paramters are:
+				--	Find a place to put an "item-on-ground", begin the search at the center of the entity's position,
+				--	infinitely large search radius, search positions in increments of 0.1, & don't snap to grid.
+				local where = surface.find_non_colliding_position( "item-on-ground", entity.position, 0, 0.1, false )
+				surface.create_entity({ name = "item-on-ground", position = where,
 						force = entity.force, stack = { name = itemName, count = numItemsRemoved }})
 				countModulesRemoved = countModulesRemoved + numItemsRemoved
 			end
@@ -89,7 +94,7 @@ end
 function begin_tracking( entity )
 	--Get a unique registration number from the global script object:
 	--What's cool is that registration persists through save/load cycles & registration is global among all mods:
-	local regNumber = script.register_on_entity_destroyed( aiCore )
+	local regNumber = script.register_on_entity_destroyed( entity )
 	if global.trackedEntities[ regNumber ] == nil then
 		global.trackedEntities[ regNumber ] = entity
 		global.trackedEntities.length = global.trackedEntities.length + 1
@@ -158,7 +163,7 @@ end, SHARED_FILTER )
 --This is not the only place we keep track of whether entities are valid or not;
 --we will also remove invalid entries as we come across them when iterating through global.trackedEntities
 script.on_event( defines.events.on_entity_destroyed, function( event )
-	begin_tracking( event.registration_number )
+	stop_tracking( event.registration_number )
 	game.print( "on_entity_destroyed" )
 end )
 
