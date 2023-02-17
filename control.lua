@@ -132,31 +132,26 @@ end
 --Setup tracking table when a new game is created or this mod is added to a save for the first time:
 script.on_init( function()
 	create_tracking_table()
-	game.print( "on_init" )
 end )
 
 --Called when a player builds an entity:
 script.on_event( defines.events.on_built_entity, function( event )
 	begin_tracking( event.created_entity )
-	game.print( "on_built_entity" )
 end, SHARED_FILTER )
 
 --Called when the map editor clones an area onto another area:
 script.on_event( defines.events.on_entity_cloned, function( event )
 	begin_tracking( event.destination )
-	game.print( "on_entity_cloned" )
 end, SHARED_FILTER )
 
 --Called when a Construction Robot builds an entity:
 script.on_event( defines.events.on_robot_built_entity, function( event )
 	begin_tracking( event.created_entity )
-	game.print( "on_robot_built_entity" )
 end, SHARED_FILTER )
 
 --Called when a piece of Lua code builds an entity & allows other mods to know about it:
 script.on_event( defines.events.script_raised_built, function( event )
 	begin_tracking( event.entity )
-	game.print( "script_raised_built" )
 end, SHARED_FILTER )
 
 --Called when an entity is destroyed for any reason.
@@ -164,7 +159,6 @@ end, SHARED_FILTER )
 --we will also remove invalid entries as we come across them when iterating through global.trackedEntities
 script.on_event( defines.events.on_entity_destroyed, function( event )
 	stop_tracking( event.registration_number )
-	game.print( "on_entity_destroyed" )
 end )
 
 -------------------------------------------------------------------------------------------
@@ -178,7 +172,7 @@ script.on_nth_tick( UPDATE_INTERVAL, function( event )
 			if entity.valid then
 				local modulesRemoved = remove_inserter_modules_from_entity( entity )
 				if modulesRemoved > 0 then
-					entity.force.print( "Removed "..modulesRemoved.." modules" )
+					entity.force.print( LIMITATION_ERROR_MESSAGE )
 				end
 			else
 				--This table entry is invalid!  Remove it from the list as it's just garbage now.
