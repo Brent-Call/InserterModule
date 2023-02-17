@@ -1,5 +1,5 @@
---Due to Bobmodules changing the limitations of my Inserter Modules, I must change them back!
---Bob changes the limitation and the message key of the modules, so I will simply revert them to what they should be:
+--This was old code for compatibility with Bobmodules.
+--Instead of testing to see if it's still needed or providing any updates, I'll just leave it pretty much as-is.
 local inserterModuleLimitation =
 {
 	"burner-inserter",
@@ -11,11 +11,11 @@ local inserterModuleLimitation =
 	"stack-filter-inserter"
 }
 
-data.raw.module[ "inserter-module" ].limitation = inserterModuleLimitation
-data.raw.module[ "inserter-module" ].limitation_message_key = "inserter-module-limitation"
+data.raw.module[ "Q-InserterModule:inserter-module" ].limitation = inserterModuleLimitation
+data.raw.module[ "Q-InserterModule:inserter-module" ].limitation_message_key = "Q-InserterModule:inserter-module-limitation"
 
-data.raw.module[ "inserter-module-2" ].limitation = inserterModuleLimitation
-data.raw.module[ "inserter-module-2" ].limitation_message_key = "inserter-module-limitation"
+data.raw.module[ "Q-InserterModule:inserter-module-2" ].limitation = inserterModuleLimitation
+data.raw.module[ "Q-InserterModule:inserter-module-2" ].limitation_message_key = "Q-InserterModule:inserter-module-limitation"
 
-data.raw.module[ "inserter-module-3" ].limitation = inserterModuleLimitation
-data.raw.module[ "inserter-module-3" ].limitation_message_key = "inserter-module-limitation"
+data.raw.module[ "Q-InserterModule:inserter-module-3" ].limitation = inserterModuleLimitation
+data.raw.module[ "Q-InserterModule:inserter-module-3" ].limitation_message_key = "Q-InserterModule:inserter-module-limitation"

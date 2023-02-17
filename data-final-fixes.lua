@@ -95,9 +95,9 @@ if settings.startup[ "Q-InserterModule:dynamic-recipe-whitelist" ].value == true
 	end
 	
 	--Then we set all inserter modules' limitations to be that:
-	data.raw.module[ "inserter-module" ].limitation = allInserterRecipes
-	data.raw.module[ "inserter-module-2" ].limitation = allInserterRecipes
-	data.raw.module[ "inserter-module-3" ].limitation = allInserterRecipes
+	data.raw.module[ "Q-InserterModule:inserter-module" ].limitation = allInserterRecipes
+	data.raw.module[ "Q-InserterModule:inserter-module-2" ].limitation = allInserterRecipes
+	data.raw.module[ "Q-InserterModule:inserter-module-3" ].limitation = allInserterRecipes
 end
 
 

@@ -1,7 +1,7 @@
 data:extend({
 {
 	type = "recipe",
-	name = "inserter-module",
+	name = "Q-InserterModule:inserter-module",
 	--Normal recipe difficulty:
 	normal =
 	{
@@ -12,7 +12,7 @@ data:extend({
 			{ "electronic-circuit", 5 },
 			{ "advanced-circuit", 5 }
 		},
-		result = "inserter-module"
+		result = "Q-InserterModule:inserter-module"
 	},
 	--Expensive recipe difficulty:
 	expensive =
@@ -24,12 +24,12 @@ data:extend({
 			{ "electronic-circuit", 10 },
 			{ "advanced-circuit", 10 }
 	    	},
-		result = "inserter-module"
+		result = "Q-InserterModule:inserter-module"
 	}
 },
 {
 	type = "recipe",
-	name = "inserter-module-2",
+	name = "Q-InserterModule:inserter-module-2",
 	--Normal recipe difficulty:
 	normal =
 	{
@@ -37,11 +37,11 @@ data:extend({
 		energy_required = 30,
 		ingredients = 
 		{
-			{ "inserter-module", 2 },
+			{ "Q-InserterModule:inserter-module", 2 },
 			{ "advanced-circuit", 5 },
 			{ "processing-unit", 5 }
 		},
-		result = "inserter-module-2"
+		result = "Q-InserterModule:inserter-module-2"
 	},
 	--Expensive recipe difficulty:
 	expensive =
@@ -50,16 +50,16 @@ data:extend({
 		energy_required = 30,
 		ingredients = 
 		{
-			{ "inserter-module", 2 },
+			{ "Q-InserterModule:inserter-module", 2 },
 			{ "advanced-circuit", 10 },
 			{ "processing-unit", 10 }
 		},
-		result = "inserter-module-2"
+		result = "Q-InserterModule:inserter-module-2"
 	}
 },
 {
 	type = "recipe",
-	name = "inserter-module-3",
+	name = "Q-InserterModule:inserter-module-3",
 	--Normal recipe difficulty:
 	normal =
 	{
@@ -67,11 +67,11 @@ data:extend({
 		energy_required = 60,
 		ingredients = 
 		{
-      		{ "inserter-module-2", 2 },
+      		{ "Q-InserterModule:inserter-module-2", 2 },
       		{ "effectivity-module-2", 1 },
       		{ "processing-unit", 5 }
 		},
-		result = "inserter-module-3"
+		result = "Q-InserterModule:inserter-module-3"
 	},
 	--Expensive recipe difficulty:
 	expensive =
@@ -80,11 +80,11 @@ data:extend({
 		energy_required = 60,
 		ingredients = 
 		{
-			{ "inserter-module-2", 2 },
+			{ "Q-InserterModule:inserter-module-2", 2 },
 			{ "effectivity-module-2", 1 },
 			{ "processing-unit", 10 }
     		},
-		result = "inserter-module-3"
+		result = "Q-InserterModule:inserter-module-3"
 	}
 }
 })

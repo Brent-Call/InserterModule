@@ -2,10 +2,10 @@
 data:extend({
 {
 	type = "technology",
-	name = "inserter-module",
+	name = "Q-InserterModule:inserter-module",
 	icon = "__InserterModule__/Graphics/inserter-module-technology.png",
 	icon_size = 32,
-	effects = {{ type = "unlock-recipe", recipe = "inserter-module" }},
+	effects = {{ type = "unlock-recipe", recipe = "Q-InserterModule:inserter-module" }},
 	prerequisites = { "modules" },
 	unit =
 	{
@@ -22,11 +22,11 @@ data:extend({
 },
 {
 	type = "technology",
-	name = "inserter-module-2",
+	name = "Q-InserterModule:inserter-module-2",
 	icon = "__InserterModule__/Graphics/inserter-module-technology.png",
 	icon_size = 32,
-	effects = {{ type = "unlock-recipe", recipe = "inserter-module-2" }},
-	prerequisites = { "inserter-module", "advanced-electronics-2" },
+	effects = {{ type = "unlock-recipe", recipe = "Q-InserterModule:inserter-module-2" }},
+	prerequisites = { "Q-InserterModule:inserter-module", "advanced-electronics-2" },
 	unit =
 	{
 		count = 75,
@@ -43,11 +43,11 @@ data:extend({
 },
 {
 	type = "technology",
-	name = "inserter-module-3",
+	name = "Q-InserterModule:inserter-module-3",
 	icon = "__InserterModule__/Graphics/inserter-module-technology.png",
 	icon_size = 32,
-	effects = {{ type = "unlock-recipe", recipe = "inserter-module-3" }},
-	prerequisites = { "inserter-module-2", "effectivity-module-2", "production-science-pack" },
+	effects = {{ type = "unlock-recipe", recipe = "Q-InserterModule:inserter-module-3" }},
+	prerequisites = { "Q-InserterModule:inserter-module-2", "effectivity-module-2", "production-science-pack" },
 	unit =
 	{
 		count = 300,

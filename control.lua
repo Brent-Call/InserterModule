@@ -4,13 +4,10 @@ require "util"
 --     LOCAL CONSTANTS     --
 -----------------------------
 --The name of the module category prototype associated with Inserter Modules:
---TODO: change this value when you rename all prototypes:
-local INSERTER_MODULE_CATEGORY = "inserter"
+local INSERTER_MODULE_CATEGORY = "Q-InserterModule:inserter"
 --A LocalisedString containing the message that's displayed when you try to insert an Inserter Module
 --into a type of machine that does not allow Inserter Modules:
---TODO: change this value when you rename all prototypes:
---TODO: remove this if unused.
-local LIMITATION_ERROR_MESSAGE = { "item-limitation.inserter-module-limitation" }
+local LIMITATION_ERROR_MESSAGE = { "item-limitation.Q-InserterModule:inserter-module-limitation" }
 --This is the table of search parameters when initializing the tracking table on an existing savefile.
 --We add ALL entities that are of type "mining-drill", "beacon", "lab", or "furnace".
 --These types of entities are chosen because they support modules but don't have crafting recipes (except furnace), so

@@ -14,52 +14,54 @@ local inserterModuleLimitation =
 data:extend({
 {
 	type = "module-category",
-	name = "inserter"
+	name = "Q-InserterModule:inserter"
 },
 {
 	type = "module",
-	name = "inserter-module",
+	name = "Q-InserterModule:inserter-module",
 	icon = "__InserterModule__/Graphics/inserter-module.png",
 	icon_size = 32,
 	subgroup = "module",
-	category = "inserter",
+	category = "Q-InserterModule:inserter",
 	tier = 1,
 	order = "d[inserter]-a[inserter-module]",
 	stack_size = 50,
 	default_request_amount = 10,
 	effect = { productivity = { bonus = 0.04 }, consumption = { bonus = 0.3 }, pollution = { bonus = 0.8 }},
 	limitation = inserterModuleLimitation,
-	limitation_message_key = "inserter-module-limitation"
+	limitation_message_key = "Q-InserterModule:inserter-module-limitation"
 },
 {
 	type = "module",
-	name = "inserter-module-2",
+	name = "Q-InserterModule:inserter-module-2",
+	localised_description = { "Q-InserterModule:inserter-module" },
 	icon = "__InserterModule__/Graphics/inserter-module-2.png",
 	icon_size = 32,
 	subgroup = "module",
-	category = "inserter",
+	category = "Q-InserterModule:inserter",
 	tier = 2,
 	order = "d[inserter]-b[inserter-module-2]",
 	stack_size = 50,
 	default_request_amount = 10,
 	effect = { productivity = { bonus = 0.07 }, consumption = { bonus = 0.5 }, pollution = { bonus = 0.4 }},
 	limitation = inserterModuleLimitation,
-	limitation_message_key = "inserter-module-limitation"
+	limitation_message_key = "Q-InserterModule:inserter-module-limitation"
 },
 {
 	type = "module",
-	name = "inserter-module-3",
+	name = "Q-InserterModule:inserter-module-3",
+	localised_description = { "Q-InserterModule:inserter-module" },
 	icon = "__InserterModule__/Graphics/inserter-module-3.png",
 	icon_size = 32,
 	subgroup = "module",
-	category = "inserter",
+	category = "Q-InserterModule:inserter",
 	tier = 3,
 	order = "d[inserter]-c[inserter-module-3]",
 	stack_size = 50,
 	default_request_amount = 10,
 	effect = { productivity = { bonus = 0.13 }, consumption = { bonus = 0.8 }},
 	limitation = inserterModuleLimitation,
-	limitation_message_key = "inserter-module-limitation"
+	limitation_message_key = "Q-InserterModule:inserter-module-limitation"
 }
 })
 
