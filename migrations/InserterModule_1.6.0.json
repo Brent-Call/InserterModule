@@ -1,0 +1,24 @@
+{
+	"item":
+	[
+		[ "inserter-module", "Q-InserterModule:inserter-module" ],
+		[ "inserter-module-2", "Q-InserterModule:inserter-module-2" ],
+		[ "inserter-module-3", "Q-InserterModule:inserter-module-3" ]
+	],
+	"recipe":
+	[
+		[ "inserter-module", "Q-InserterModule:inserter-module" ],
+		[ "inserter-module-2", "Q-InserterModule:inserter-module-2" ],
+		[ "inserter-module-3", "Q-InserterModule:inserter-module-3" ]
+	],
+	"technology":
+	[
+		[ "inserter-module", "Q-InserterModule:inserter-module" ],
+		[ "inserter-module-2", "Q-InserterModule:inserter-module-2" ],
+		[ "inserter-module-3", "Q-InserterModule:inserter-module-3" ]
+	],
+	"module-category":
+	[
+		[ "inserter", "Q-InserterModule:inserter" ]
+	]
+}
