@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 1.6.0 - Performance improvements
+Date: 18. 12. 2020
+  Minor Features:
+    - There is now a startup option for dynamic recipe selection.  That should make this mod compatible with all mods that add new inserters.
+  Optimizations:
+    - Improved performance.  Should also make this mod multiplayer compatible.
+---------------------------------------------------------------------------------------------------
 Version: 1.5.1 - Factorio version 1.1
 Date: 18. 12. 2020
   Changes:
