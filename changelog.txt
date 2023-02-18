@@ -5,6 +5,8 @@ Date: 17. 02. 2023
     - There is now a startup option for dynamic recipe selection.  That should make this mod compatible with all mods that add new inserters.
   Optimizations:
     - Improved performance.  Should also make this mod multiplayer compatible.
+  Changes:
+    - Removed the part where inserter modules are more expensive in marathon mode.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.1 - Factorio version 1.1
 Date: 18. 12. 2020
