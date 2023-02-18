@@ -4,7 +4,15 @@ data:extend({
 {
 	type = "bool-setting",
 	name = "Q-InserterModule:dynamic-recipe-whitelist",
-	default_value = false,
-	setting_type = "startup"
+	setting_type = "startup",
+	default_value = false
+},
+{
+	type = "int-setting",
+	name = "Q-InserterModule:updates-per-tick",
+	setting_type = "runtime-global",
+	default_value = 3,
+	minimum_value = 1,
+	maximum_value = 1024
 }
 })

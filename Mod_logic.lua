@@ -10,6 +10,9 @@ local INSERTER_MODULE_CATEGORY = "Q-InserterModule:inserter"
 --The special case with furnaces is that sometimes they have crafting recipes, sometimes they don't, & they only check
 --for the module limitation if they have crafting recipes.
 local SEARCH_PARAMETERS = { type = { "mining-drill", "beacon", "lab", "furnace" }}
+--A LocalisedString containing the message that's displayed when you try to insert an Inserter Module
+--into a type of machine that does not allow Inserter Modules:
+local LIMITATION_ERROR_MESSAGE = { "item-limitation.Q-InserterModule:inserter-module-limitation" }
 
 -------------------------------------------
 --     FUNCTIONS GOVERNING MOD LOGIC     --
@@ -72,8 +75,9 @@ end
 
 -----------------------------------------------------------------------
 --     FUNCTIONS FOR MANAGING THIS MOD'S INTERNAL TRACKING TABLE     --
+--                     (ACTUALLY A SPARSE ARRAY)                     --
 -----------------------------------------------------------------------
---Adds an entity to the list of entities being tracked by this mod:
+--Adds an entity to the sparse array of entities being tracked by this mod:
 --@param entity	The LuaEntity object corresponding to the entity we'll track.
 --				If we are already tracking that LuaEntity, does nothing.
 --@return			nil
@@ -87,7 +91,7 @@ function begin_tracking( entity )
 	end
 end
 
---Removes an entity from the list that's tracked internally.
+--Removes an entity from the sparse array that's tracked internally.
 --@param  regNumber		The registration number of any LuaEntity that was destroyed (for any reason).
 --					If this doesn't correspond with an entry in our table, we ignore that.
 --@return				nil
@@ -98,7 +102,7 @@ function stop_tracking( regNumber )
 	end
 end
 
---Creates a table to track all types of entities we care about.
+--Creates a sparse array to track all types of entities we care about.
 --Exists mainly for backwards compatibility, but also serves to initialize the tracking table at the beginning of the game.
 --If the tracking table already exists when this function is called, the entire table is discarded & remade from scratch.
 function create_tracking_table()
@@ -110,4 +114,46 @@ function create_tracking_table()
 			begin_tracking( entity )
 		end
 	end
+end
+
+--This function performs a single step of an iteration thorough the sparse array, global.trackedEntities.
+--For each entity in the sparse array, we call the function remove_inserter_modules_from_entity( entity ).
+function single_step_update_tracked_entities()
+	--The following line of code does the following:
+	--If global.keyToProcess is a key in the table global.trackedEntities, it fetches the next key-value pair & stores the key
+	--in global.keyToProcess & the value in entity.  However, if it reaches the end of the table, then it returns nil instead.
+	--If global.keyToProcess is nil (as it would be upon, say, loading an old save) then it fetches the first key-value pair instead.
+	--The fact keyToProcess is stored in the global table means that this persists through multiple ticks & even through save/load.
+	global.keyToProcess, entity = next( global.trackedEntities, global.keyToProcess )
+
+	--So now we have a key-value pair, but it's not guaranteed that it's valid!
+	--That's because if we fell off the end of the sparse array then global.keyToProcess will be nil.
+	--The table global.trackedEntities also contains another key, the string "length".  The associated value is the number of
+	--entities in the sparse array.
+	--On top of all that, it's possible that the entity in question has become invalid since last iteration.
+	--The solution is to only process entity if global.keyToProcess is the registration number of some entity.
+	if type( global.keyToProcess ) == "number" then
+		if entity.valid then
+			local modulesRemoved = remove_inserter_modules_from_entity( entity )
+			if modulesRemoved > 0 then
+				entity.force.print( LIMITATION_ERROR_MESSAGE )
+			end
+		else
+			--This table entry is invalid!  Remove it from the sparse array as it's just garbage now.
+			--Removing something from a table while iterating is safe, it turns out.
+			stop_tracking( key )
+		end
+	end
+	--The above code does nothing 2 times per iteration cycle:
+	--	Once when our iteration brings us to the "length" member of the table.
+	--	Once when we reach the end of the table.
+	--Missing 2 ticks out of hundreds isn't a big deal for the purposes of this mod.
+	--We also have undefined behavior if entities are added partway into an iteration cycle--not that an error is caused,
+	--but we don't know if we'll process that entity this cycle or next cycle.  That doesn't matter!
+	--I don't know what this technique is officially called, but I choose to call it "fuzzy iteration"--
+	--where my goal is to iterate through the entire sparse array, but if I miss a few elements here &
+	--there it's no big deal because they will be processed on the next iteration cycle.
+	--This means that in a megabase it could potentially be a minute before any given entity is processed, but by that time
+	--the scale of the game has increased, so getting extra productivity from a few illegally placed Inserter Modules
+	--is miniscule compared to how much the factory produces overall.
 end
