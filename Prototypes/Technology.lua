@@ -1,3 +1,4 @@
+--These technologies will be deleted during the updates stage if the mod Industrial Revolution 2 is enabled.
 --Technologies required to research the Inserter Module:
 data:extend({
 {

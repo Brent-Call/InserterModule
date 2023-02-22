@@ -1,3 +1,5 @@
+require( "Prototypes.Technology_updates" )
+
 --This was old code for compatibility with Bobmodules.
 --Instead of testing to see if it's still needed or providing any updates, I'll just leave it pretty much as-is.
 local inserterModuleLimitation =

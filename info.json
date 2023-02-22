@@ -6,5 +6,5 @@
   "description": "Adds a new type of module.  It's like a productivity module but exclusively for crafting inserters.",
   "homepage": "https://forums.factorio.com/viewtopic.php?f=190&t=58328",
   "factorio_version": "1.1",
-  "dependencies": [ "(?) boblogistics" ]
+  "dependencies": [ "(?) boblogistics", "(?) IndustrialRevolution >= 2.3.2" ]
 }
