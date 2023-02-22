@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.1
-Date: 17. 02. 2023
+Date: 21. 02. 2023
   Minor Features:
     - Added compatibility with the mod "Industrial Revolution 2" by Deadlock989.  Specifically version 2 of the mod.
 ---------------------------------------------------------------------------------------------------
